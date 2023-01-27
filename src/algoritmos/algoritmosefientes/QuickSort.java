@@ -1,45 +1,47 @@
 package algoritmos.algoritmosefientes;
 
 public class QuickSort {
+
     public static void ordenar(int[] arr) {
-        ordenarRapido(arr, 0, arr.length - 1);
+        quicksort(arr, 0, arr.length - 1);
+    }
+    public static void quicksort(int[] array, int esquerda, int direita) {
+        // Verifica se o índice esquerdo é menor do que o índice direito
+        if (esquerda < direita) {
+            // Encontra o ponto de particionamento
+            int posicaoCentro = dividir(array, esquerda, direita);
+            // Ordena o lado esquerdo do centro
+            quicksort(array, esquerda, posicaoCentro - 1);
+            // Ordena o lado direito do centro
+            quicksort(array, posicaoCentro + 1, direita);
+        }
     }
 
-    private static void ordenarRapido(int[] arr, int baixo, int alto) {
-        // caso base: retorne se o índice baixo for maior ou igual ao índice alto
-        if (baixo >= alto) return;
-        // escolha o índice do elemento central como o elemento do meio
-        int indiceCentro = (baixo + alto) / 2;
-        // particione o array em torno do elemento do centro
-        int indiceParticao = particionar(arr, baixo, alto, indiceCentro);
-        // ordene recursivamente os elementos antes da particão
-        ordenarRapido(arr, baixo, indiceParticao - 1);
-        // ordene recursivamente os elementos depois da particão
-        ordenarRapido(arr, indiceParticao, alto);
-    }
-
-    private static int particionar(int[] arr, int baixo, int alto, int indiceCentro) {
-        int valorCentro = arr[indiceCentro];
-        // mova o elemento do centro para o final do array
-        trocar(arr, indiceCentro, alto);
-        // inicialize o índice da particão
-        int indiceParticao = baixo;
-        // itere pelo array e mova os elementos menores que o centro para a esquerda da particão
-        for (int i = baixo; i < alto; i++) {
-            if (arr[i] < valorCentro) {
-                trocar(arr, i, indiceParticao);
-                indiceParticao++;
+    public static int dividir(int[] array, int esquerda, int direita) {
+        // Escolhe o elemento do meio como o centro
+        int centro = array[(esquerda + direita) / 2];
+        // Enquanto os índices esquerdo e direito não se cruzam
+        while (esquerda <= direita) {
+            // Encontra um elemento do lado esquerdo que deva ser movido para o lado direito
+            while (array[esquerda] < centro) {
+                esquerda++;
+            }
+            // Encontra um elemento do lado direito que deva ser movido para o lado esquerdo
+            while (array[direita] > centro) {
+                direita--;
+            }
+            // Troca os elementos encontrados
+            if (esquerda <= direita) {
+                int temp = array[esquerda];
+                array[esquerda] = array[direita];
+                array[direita] = temp;
+                esquerda++;
+                direita--;
             }
         }
-        // mova o elemento do centro para o índice da particão
-        trocar(arr, indiceParticao, alto);
-        return indiceParticao;
-    }
-
-    private static void trocar(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        // Retorna a posição do centro
+        return esquerda;
     }
 }
+
 

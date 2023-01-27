@@ -1,6 +1,12 @@
 package algoritmos.algoritmosefientes;
 
+import com.sun.tools.javac.Main;
+
+import java.util.Arrays;
+
 public class HeapSort {
+
+
 
     public static void ordenar(int[] array) {
         // Construir a árvore de heap
