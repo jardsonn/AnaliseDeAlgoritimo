@@ -6,7 +6,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        int[] elemets = Dados100.ELEMENTOS_QUASE_ORDENADOS_SEM_REPETICAO_100;
+        int[] elemets = Dados1000.ELEMENTOS_QUASE_ORDENADOS_COM_REPETICAO_1000;
 
         printBubbleSort(elemets);
         printInsertionSort(elemets);
