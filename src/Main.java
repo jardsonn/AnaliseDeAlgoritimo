@@ -2,6 +2,7 @@ import algoritmos.NotEfficient;
 import algoritmos.algoritmosefientes.HeapSort;
 import algoritmos.algoritmosefientes.MergeSort;
 import algoritmos.algoritmosefientes.QuickSort;
+import dados.Dados100;
 
 import java.util.*;
 
@@ -9,7 +10,10 @@ public class Main {
 
 
     public static void main(String[] args) {
-        int[] elemets = Dados1000.ELEMENTOS_ALEATORIO_COM_REPETICAO_1000;
+//        int[] elemets = Dados100.ELEMENTOS_ALEATORIO_COM_REPETICAO_100;
+        int[] elemets10000 = new SequenceGenerator(SequenceGenerator.ELEMENTOS_ALEATORIO_SEM_REPETICAO_10000).elements10000();
+
+        int[] elemets = elemets10000;
 
         System.out.println("---------- EFICIENTES----------");
         heapSortPrint(elemets);
@@ -61,7 +65,7 @@ public class Main {
     }
 
 
-    public static void heapSortPrint(int[] elementos){
+    public static void heapSortPrint(int[] elementos) {
         int[] e = copy(elementos);
         System.out.println("##### HeapSort #####");
         System.out.println("ELEMENTOS DE ENTRADA: " + Arrays.toString(e));
@@ -72,7 +76,7 @@ public class Main {
         System.out.println("TEMPO DE EXECUÇÃO: " + duration + " milissegundos\n\n");
     }
 
-    public static void mergeSortPrint(int[] elementos){
+    public static void mergeSortPrint(int[] elementos) {
         int[] e = copy(elementos);
         System.out.println("##### MergeSort #####");
         System.out.println("ELEMENTOS DE ENTRADA: " + Arrays.toString(e));
@@ -84,7 +88,7 @@ public class Main {
     }
 
 
-    public static void quickSortPrint(int[] elementos){
+    public static void quickSortPrint(int[] elementos) {
         int[] e = copy(elementos);
         System.out.println("##### QuickSort #####");
         System.out.println("ELEMENTOS DE ENTRADA: " + Arrays.toString(e));
@@ -94,8 +98,6 @@ public class Main {
         System.out.println("ELEMENTOS ORDENADOS: " + Arrays.toString(e));
         System.out.println("TEMPO DE EXECUÇÃO: " + duration + " milissegundos\n\n");
     }
-
-
 
 
 }
