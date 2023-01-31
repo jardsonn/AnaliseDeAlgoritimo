@@ -1,6 +1,21 @@
 package algoritmos.algoritmosefientes;
 
+import java.util.Arrays;
+
 public class MergeSort {
+
+    public static void print(int[] elementos){
+        System.out.println("##### MergeSort #####");
+        System.out.println("ELEMENTOS DE ENTRADA: " + Arrays.toString(elementos));
+        long start = System.currentTimeMillis();
+        ordenar(elementos);
+        long duration = System.currentTimeMillis() - start;
+        System.out.println("ELEMENTOS ORDENADOS: " + Arrays.toString(elementos));
+        System.out.println("TEMPO DE EXECUÇÃO: " + duration + " milissegundos\n\n");
+    }
+
+
+
     // Método principal do algoritmo
     public static void ordenar(int[] vetor) {
         // Verifica se o tamanho do vetor é maior que 1
